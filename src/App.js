@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import SideMenu from "./components/SideMenu";
+import { Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/dashboard/Dashboard";
+import OTF from "./pages/otf/OTF";
+import Admin from "./pages/admin/Admin";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideMenu />
+      {/* main contents */}
+      <Routes>
+        {/* dashboard */}
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        {/* admin */}
+        <Route path="/admin/customer-master" element={<Admin />}></Route>
+        {/* otf */}
+        <Route
+          path="/sales/order-to-delivery/booking-form"
+          element={<OTF />}
+        ></Route>
+      </Routes>
     </div>
   );
 }
